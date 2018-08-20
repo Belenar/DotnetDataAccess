@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ConsultantModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ConsultantModelStoreContainer">
+    <EntitySet Name="Consultants" EntityType="ConsultantModel.Store.Consultants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Certifications" EntityType="ConsultantModel.Store.Certifications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ResumeItems" EntityType="ConsultantModel.Store.ResumeItems" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ConsultantResumeItem" Association="ConsultantModel.Store.ConsultantResumeItem">
+      <End Role="Consultant" EntitySet="Consultants" />
+      <End Role="ResumeItem" EntitySet="ResumeItems" />
+    </AssociationSet>
+    <AssociationSet Name="CertificationResumeItem" Association="ConsultantModel.Store.CertificationResumeItem">
+      <End Role="Certification" EntitySet="Certifications" />
+      <End Role="ResumeItem" EntitySet="ResumeItems" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Consultants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="Birthday" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Certifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="CertificationCode" Type="nvarchar" Nullable="false" DefaultValue="&lt;empty&gt;" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="ResumeItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateAcquired" Type="datetime" Nullable="false" />
+    <Property Name="Consultant_Id" Type="int" Nullable="false" />
+    <Property Name="Certification_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ConsultantResumeItem">
+    <End Role="Consultant" Type="ConsultantModel.Store.Consultants" Multiplicity="1" />
+    <End Role="ResumeItem" Type="ConsultantModel.Store.ResumeItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consultant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ResumeItem">
+        <PropertyRef Name="Consultant_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CertificationResumeItem">
+    <End Role="Certification" Type="ConsultantModel.Store.Certifications" Multiplicity="1" />
+    <End Role="ResumeItem" Type="ConsultantModel.Store.ResumeItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Certification">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ResumeItem">
+        <PropertyRef Name="Certification_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ConsultantModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ConsultantModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Consultants" EntityType="ConsultantModel.Consultant" />
+          <EntitySet Name="Certifications" EntityType="ConsultantModel.Certification" />
+          <EntitySet Name="ResumeItems" EntityType="ConsultantModel.ResumeItem" />
+          <AssociationSet Name="ConsultantResumeItem" Association="ConsultantModel.ConsultantResumeItem">
+            <End Role="Consultant" EntitySet="Consultants" />
+            <End Role="ResumeItem" EntitySet="ResumeItems" />
+          </AssociationSet>
+          <AssociationSet Name="CertificationResumeItem" Association="ConsultantModel.CertificationResumeItem">
+            <End Role="Certification" EntitySet="Certifications" />
+            <End Role="ResumeItem" EntitySet="ResumeItems" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Consultant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="64" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="64" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ResumeItem" Relationship="ConsultantModel.ConsultantResumeItem" FromRole="Consultant" ToRole="ResumeItem" />
+          <Property Name="NoTurnSignals" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Certification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" />
+          <Property Name="CertificationCode" Type="String" Nullable="false" MaxLength="128" DefaultValue="&lt;empty&gt;" />
+          <NavigationProperty Name="ResumeItem" Relationship="ConsultantModel.CertificationResumeItem" FromRole="Certification" ToRole="ResumeItem" />
+        </EntityType>
+        <EntityType Name="ResumeItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateAcquired" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Consultant" Relationship="ConsultantModel.ConsultantResumeItem" FromRole="ResumeItem" ToRole="Consultant" />
+          <NavigationProperty Name="Certification" Relationship="ConsultantModel.CertificationResumeItem" FromRole="ResumeItem" ToRole="Certification" />
+        </EntityType>
+        <Association Name="ConsultantResumeItem">
+          <End Type="ConsultantModel.Consultant" Role="Consultant" Multiplicity="1" />
+          <End Type="ConsultantModel.ResumeItem" Role="ResumeItem" Multiplicity="*" />
+        </Association>
+        <Association Name="CertificationResumeItem">
+          <End Type="ConsultantModel.Certification" Role="Certification" Multiplicity="1" />
+          <End Type="ConsultantModel.ResumeItem" Role="ResumeItem" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ConsultantModelStoreContainer" CdmEntityContainer="ConsultantModelContainer">
+    <EntitySetMapping Name="Consultants">
+      <EntityTypeMapping TypeName="IsTypeOf(ConsultantModel.Consultant)">
+        <MappingFragment StoreEntitySet="Consultants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Certifications">
+      <EntityTypeMapping TypeName="IsTypeOf(ConsultantModel.Certification)">
+        <MappingFragment StoreEntitySet="Certifications">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CertificationCode" ColumnName="CertificationCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResumeItems">
+      <EntityTypeMapping TypeName="IsTypeOf(ConsultantModel.ResumeItem)">
+        <MappingFragment StoreEntitySet="ResumeItems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DateAcquired" ColumnName="DateAcquired" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ConsultantResumeItem" TypeName="ConsultantModel.ConsultantResumeItem" StoreEntitySet="ResumeItems">
+      <EndProperty Name="Consultant">
+        <ScalarProperty Name="Id" ColumnName="Consultant_Id" />
+      </EndProperty>
+      <EndProperty Name="ResumeItem">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CertificationResumeItem" TypeName="ConsultantModel.CertificationResumeItem" StoreEntitySet="ResumeItems">
+      <EndProperty Name="Certification">
+        <ScalarProperty Name="Id" ColumnName="Certification_Id" />
+      </EndProperty>
+      <EndProperty Name="ResumeItem">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
