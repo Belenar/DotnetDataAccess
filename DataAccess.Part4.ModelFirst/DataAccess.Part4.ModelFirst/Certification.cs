@@ -17,8 +17,7 @@ namespace DataAccess.Part4.ModelFirst
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Certification()
         {
-            this.CertificationCode = "<empty>";
-            this.ResumeItem = new HashSet<ResumeItem>();
+            this.ResumeItems = new HashSet<ResumeItem>();
         }
     
         public int Id { get; set; }
@@ -26,6 +25,6 @@ namespace DataAccess.Part4.ModelFirst
         public string CertificationCode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ResumeItem> ResumeItem { get; set; }
+        public virtual ICollection<ResumeItem> ResumeItems { get; set; }
     }
 }

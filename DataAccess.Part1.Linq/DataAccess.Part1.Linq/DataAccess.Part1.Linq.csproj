@@ -9,7 +9,7 @@
     <RootNamespace>DataAccess.Part1.Linq</RootNamespace>
     <AssemblyName>DataAccess.Part1.Linq</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-	<TargetFrameworkProfile />
+    <TargetFrameworkProfile />
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -46,6 +46,7 @@
     <Compile Include="DemoClass.cs" />
     <Compile Include="DemoSubClass.cs" />
     <Compile Include="Grouping.cs" />
+    <Compile Include="LinqExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryListInitializer.cs" />

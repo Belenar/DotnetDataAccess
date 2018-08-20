@@ -17,16 +17,15 @@ namespace DataAccess.Part4.ModelFirst
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Consultant()
         {
-            this.ResumeItem = new HashSet<ResumeItem>();
+            this.Resume = new HashSet<ResumeItem>();
         }
     
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public System.DateTime Birthday { get; set; }
-        public bool NoTurnSignals { get; set; }
+        public string Birthday { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ResumeItem> ResumeItem { get; set; }
+        public virtual ICollection<ResumeItem> Resume { get; set; }
     }
 }

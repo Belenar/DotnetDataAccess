@@ -53,12 +53,43 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blogs.cs" />
+    <Compile Include="Migrations\201607192113028_InitialCreate.cs" />
+    <Compile Include="Migrations\201607192113028_InitialCreate.Designer.cs">
+      <DependentUpon>201607192113028_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607192114345_AddBlogUrl.cs" />
+    <Compile Include="Migrations\201607192114345_AddBlogUrl.Designer.cs">
+      <DependentUpon>201607192114345_AddBlogUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607192116143_AddPost.cs" />
+    <Compile Include="Migrations\201607192116143_AddPost.Designer.cs">
+      <DependentUpon>201607192116143_AddPost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607192119266_AddPostAbstract.cs" />
+    <Compile Include="Migrations\201607192119266_AddPostAbstract.Designer.cs">
+      <DependentUpon>201607192119266_AddPostAbstract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201607192113028_InitialCreate.resx">
+      <DependentUpon>201607192113028_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607192114345_AddBlogUrl.resx">
+      <DependentUpon>201607192114345_AddBlogUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607192116143_AddPost.resx">
+      <DependentUpon>201607192116143_AddPost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607192119266_AddPostAbstract.resx">
+      <DependentUpon>201607192119266_AddPostAbstract.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

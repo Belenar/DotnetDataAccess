@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DataAccess.Part7.CodeFirstInheritance
 {
     public class Car : Vehicle

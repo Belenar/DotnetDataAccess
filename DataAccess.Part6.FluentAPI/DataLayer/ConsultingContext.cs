@@ -16,7 +16,12 @@ namespace DataLayer
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // We can extend here
+            modelBuilder.Entity<ResumeItem>().HasKey(i => i.ItemKey);
+            modelBuilder.Entity<Consultant>().ToTable("UberPeople");
+            modelBuilder.Entity<Consultant>().Property(c => c.FirstName).IsRequired();
+            modelBuilder.Entity<Consultant>().Property(c => c.LastName).HasMaxLength(40);
+            modelBuilder.Entity<Consultant>().Property(c => c.Birthday).HasColumnType("date");
+            modelBuilder.Entity<Consultant>().Property(c => c.Version).IsRowVersion();
 
             base.OnModelCreating(modelBuilder);
         }

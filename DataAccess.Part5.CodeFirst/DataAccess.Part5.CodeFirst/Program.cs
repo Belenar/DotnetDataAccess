@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Runtime.Remoting.Contexts;
+using System.Data.Entity;
+using DataLayer;
 using ExistingClasses;
 
 namespace DataAccess.Part5.CodeFirst
@@ -8,7 +9,7 @@ namespace DataAccess.Part5.CodeFirst
     {
         static void Main(string[] args)
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<Context>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<ConsultingContext>());
             CreateConsultant();
         }
 

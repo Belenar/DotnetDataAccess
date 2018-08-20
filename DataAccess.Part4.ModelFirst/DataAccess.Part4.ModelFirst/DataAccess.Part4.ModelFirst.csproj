@@ -35,16 +35,17 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,55 +55,54 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Certification.cs">
-      <DependentUpon>ConsultantModel.tt</DependentUpon>
+      <DependentUpon>DemoDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Consultant.cs">
-      <DependentUpon>ConsultantModel.tt</DependentUpon>
+      <DependentUpon>DemoDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="ConsultantModel.Context.cs">
+    <Compile Include="DemoDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConsultantModel.Context.tt</DependentUpon>
+      <DependentUpon>DemoDatabase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ConsultantModel.cs">
+    <Compile Include="DemoDatabase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConsultantModel.tt</DependentUpon>
+      <DependentUpon>DemoDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="ConsultantModel.Designer.cs">
+    <Compile Include="DemoDatabase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConsultantModel.edmx</DependentUpon>
+      <DependentUpon>DemoDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResumeItem.cs">
-      <DependentUpon>ConsultantModel.tt</DependentUpon>
+      <DependentUpon>DemoDatabase.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="ConsultantModel.edmx">
+    <EntityDeploy Include="DemoDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ConsultantModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DemoDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ConsultantModel.edmx.diagram">
-      <DependentUpon>ConsultantModel.edmx</DependentUpon>
+    <None Include="DemoDatabase.edmx.diagram">
+      <DependentUpon>DemoDatabase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConsultantModel.Context.tt">
+    <Content Include="DemoDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ConsultantModel.Context.cs</LastGenOutput>
-      <DependentUpon>ConsultantModel.edmx</DependentUpon>
+      <LastGenOutput>DemoDatabase.Context.cs</LastGenOutput>
+      <DependentUpon>DemoDatabase.edmx</DependentUpon>
     </Content>
-    <Content Include="ConsultantModel.edmx.sql" />
-    <Content Include="ConsultantModel.edmx2.sql" />
-    <Content Include="ConsultantModel.tt">
+    <Content Include="DemoDatabase.edmx.sql" />
+    <Content Include="DemoDatabase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ConsultantModel.cs</LastGenOutput>
-      <DependentUpon>ConsultantModel.edmx</DependentUpon>
+      <LastGenOutput>DemoDatabase.cs</LastGenOutput>
+      <DependentUpon>DemoDatabase.edmx</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

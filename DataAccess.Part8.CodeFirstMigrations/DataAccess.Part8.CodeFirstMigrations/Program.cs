@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using DataAccess.Part8.CodeFirstMigrations.Migrations;
 
 namespace DataAccess.Part8.CodeFirstMigrations
 {
@@ -7,7 +8,7 @@ namespace DataAccess.Part8.CodeFirstMigrations
     {
         static void Main(string[] args)
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<BlogContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogContext, Configuration>());
 
             using (var db = new BlogContext())
             {
